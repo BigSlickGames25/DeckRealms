@@ -463,7 +463,7 @@ code {
 .scene-stage--courtyard {
   background:
     linear-gradient(180deg, rgba(6, 10, 16, 0.10), rgba(6, 10, 16, 0.42)),
-    url("../src/images/scene1/scene1-courtyard.jpg") center center / cover no-repeat,
+    url("assets/scene1/scene1-courtyard.jpg") center center / cover no-repeat,
     radial-gradient(circle at 12% 65%, rgba(255, 216, 176, 0.08), transparent 32%),
     linear-gradient(180deg, #223046 0%, #131a27 56%, #0f1118 100%);
 }

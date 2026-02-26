@@ -10,7 +10,7 @@ import {
 } from "./data/openingContent.js";
 
 const STORAGE_KEY = "deck_realms_opening_save_v1";
-const LOCKER_IMAGE_BASE = "/src/images/scene1";
+const LOCKER_IMAGE_BASE = "assets/scene1";
 const DIALOGUE_CLOSEUP_IMAGES = {
   handlerIntro: {
     filename: "handler.jpg",
@@ -122,7 +122,7 @@ class OpeningSequenceGame {
 
   async loadGeneratedCards() {
     try {
-      const response = await fetch("/data/cards.generated.json", { cache: "no-store" });
+      const response = await fetch("data/cards.generated.json", { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const cards = await response.json();
       if (!Array.isArray(cards)) throw new Error("cards.generated.json is not an array");
