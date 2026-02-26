@@ -1,0 +1,12 @@
+{
+  "SAFE_EDIT_NOTE": "SAFE EDIT ZONE: Keep the base style prefix consistent so the art set remains visually unified.",
+  "version": "1.0.0",
+  "baseStyle": "stylized graphic novel trading card illustration, high contrast, strong outlines, dramatic rim light, full-body character centered, minimal background, 4k, no text, no watermark",
+  "factionExtras": {
+    "Hearts": "elegant austere composition, ceremonial geometry motifs, refined metallic detailing",
+    "Spades": "tactical framing, disciplined pose language, industrial armor textures",
+    "Diamonds": "prismatic refractions, precise instrument silhouettes, technocrat visual language",
+    "Clubs": "undercity scrap clutter hints, rough weld seams, gritty salvage textures",
+    "Jokers": "reality distortion artifacts, fractured reflections, unsettling asymmetry"
+  }
+}

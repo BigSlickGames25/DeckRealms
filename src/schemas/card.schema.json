@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deck-realms.local/schemas/card.schema.json",
+  "title": "Deck Realms Generated Cards",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/card"
+  },
+  "$defs": {
+    "abilityRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "timing", "cost", "text", "tags"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "timing": { "type": "string", "enum": ["buildPhase", "detonation"] },
+        "cost": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "text": { "type": "string", "minLength": 1 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "faction",
+        "rank",
+        "rankName",
+        "rowRole",
+        "archetype",
+        "rarity",
+        "stats",
+        "abilities",
+        "synergyTags",
+        "lore",
+        "artPrompt",
+        "costs",
+        "version"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Z]{3}-\\d{2}-(FRONT|MIDDLE|BACK)-\\d{3}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "faction": { "type": "string", "enum": ["Hearts", "Spades", "Diamonds", "Clubs", "Jokers"] },
+        "rank": { "type": "integer", "minimum": 0, "maximum": 14 },
+        "rankName": { "type": "string" },
+        "maskRank": { "type": "integer", "minimum": 2, "maximum": 14 },
+        "rowRole": { "type": "string", "enum": ["FRONT", "MIDDLE", "BACK"] },
+        "archetype": { "type": "string", "minLength": 1 },
+        "rarity": { "type": "string", "enum": ["COMMON", "RARE", "EPIC", "LEGENDARY"] },
+        "stats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hp", "atk", "shieldCap", "chargeCap"],
+          "properties": {
+            "hp": { "type": "integer", "minimum": 0 },
+            "atk": { "type": "integer", "minimum": 0 },
+            "shieldCap": { "type": "integer", "minimum": 0 },
+            "chargeCap": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "abilities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["buildPhase", "detonation"],
+          "properties": {
+            "buildPhase": {
+              "anyOf": [
+                { "type": "null" },
+                { "$ref": "#/$defs/abilityRef" }
+              ]
+            },
+            "detonation": { "$ref": "#/$defs/abilityRef" }
+          }
+        },
+        "synergyTags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "lore": { "type": "string", "minLength": 1 },
+        "artPrompt": { "type": "string", "minLength": 1 },
+        "costs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["powerBudgetSpent", "abilityCostTotal", "budgetCap", "baseStatCost", "underspend"],
+          "properties": {
+            "powerBudgetSpent": { "type": "integer", "minimum": 0 },
+            "abilityCostTotal": { "type": "integer", "minimum": 0 },
+            "budgetCap": { "type": "integer", "minimum": 1 },
+            "baseStatCost": { "type": "integer", "minimum": 0 },
+            "underspend": { "type": "integer", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "version": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "faction": { "const": "Jokers" } },
+            "required": ["faction"]
+          },
+          "then": {
+            "required": ["maskRank"],
+            "properties": {
+              "rank": { "const": 0 },
+              "rankName": { "const": "JOKER" },
+              "rarity": { "const": "LEGENDARY" }
+            }
+          },
+          "else": {
+            "properties": {
+              "rank": { "minimum": 2, "maximum": 14 }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "abilities": {
+                "properties": {
+                  "buildPhase": { "type": "object" }
+                },
+                "required": ["buildPhase"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "abilities": {
+                "properties": {
+                  "buildPhase": {
+                    "properties": { "timing": { "const": "buildPhase" } }
+                  },
+                  "detonation": {
+                    "properties": { "timing": { "const": "detonation" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

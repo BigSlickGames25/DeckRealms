@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deck-realms.local/schemas/deckpacks.schema.json",
+  "title": "Deck Realms Generated Deckpacks",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "seed", "notes", "packs", "jokerPool"],
+  "properties": {
+    "version": { "type": "string", "minLength": 1 },
+    "seed": {
+      "anyOf": [
+        { "type": "integer" },
+        { "type": "number" },
+        { "type": "string" }
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "packs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Hearts", "Spades", "Diamonds", "Clubs"],
+      "properties": {
+        "Hearts": { "$ref": "#/$defs/factionPacks" },
+        "Spades": { "$ref": "#/$defs/factionPacks" },
+        "Diamonds": { "$ref": "#/$defs/factionPacks" },
+        "Clubs": { "$ref": "#/$defs/factionPacks" }
+      }
+    },
+    "jokerPool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "cardIds"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "cardIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "rowRoles", "rarities", "rankNames"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "rowRoles": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "rarities": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "rankNames": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      }
+    },
+    "starterPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["starting", "recruitables", "all", "summary"],
+      "properties": {
+        "starting": { "type": "array", "items": { "type": "string" }, "minItems": 6, "maxItems": 6 },
+        "recruitables": { "type": "array", "items": { "type": "string" }, "minItems": 15, "maxItems": 15 },
+        "all": { "type": "array", "items": { "type": "string" }, "minItems": 21, "maxItems": 21 },
+        "summary": { "$ref": "#/$defs/summary" }
+      }
+    },
+    "expansionPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["additional", "totalWithStarter", "summary"],
+      "properties": {
+        "additional": { "type": "array", "items": { "type": "string" }, "minItems": 20, "maxItems": 20 },
+        "totalWithStarter": { "type": "array", "items": { "type": "string" }, "minItems": 41, "maxItems": 41 },
+        "summary": { "$ref": "#/$defs/summary" }
+      }
+    },
+    "factionPacks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Starter-21", "Expansion-41"],
+      "properties": {
+        "Starter-21": { "$ref": "#/$defs/starterPack" },
+        "Expansion-41": { "$ref": "#/$defs/expansionPack" }
+      }
+    }
+  }
+}

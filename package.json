@@ -1,0 +1,14 @@
+{
+  "name": "deck-realms-card-forge",
+  "version": "0.1.0",
+  "description": "Procedural card generator for Deck Realms (War Poker)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "generate": "node src/cli/generate.js",
+    "game:start": "node src/cli/serve-game.js",
+    "preview": "node src/cli/preview.js",
+    "test": "node --test",
+    "validate": "node src/cli/validate.js"
+  }
+}

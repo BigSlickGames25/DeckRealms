@@ -1,0 +1,131 @@
+{
+  "SAFE_EDIT_NOTE": "SAFE EDIT ZONE: Add phrase fragments to faction arrays. Keep complete phrase fragments without trailing punctuation.",
+  "version": "1.0.0",
+  "factions": {
+    "Hearts": {
+      "motives": [
+        "keeps the covenant line intact even when the cost is personal",
+        "hunts a blood-debt owed to their house across the war tables",
+        "seeks to prove their bloodline worthy of command",
+        "guards sacred formation rites that lesser nobles keep misusing"
+      ],
+      "visualCues": [
+        "lacquered plate etched with thin crimson vows",
+        "an austere mantle and shield rims polished to a ceremonial shine",
+        "ivory armor stitched with bloodline seals and candle-wax repairs",
+        "a ritual blade wrapped in immaculate red cord"
+      ],
+      "ideology": [
+        "they treat loyalty as a weapon as much as a virtue",
+        "the Covenant teaches that ordered sacrifice preserves the whole",
+        "their formation discipline is both prayer and battle doctrine",
+        "they refuse crude implants and trust only rite, steel, and oath"
+      ],
+      "quirks": [
+        "They whisper their house oath before every exchange",
+        "They polish shield edges instead of sleeping when anxious",
+        "They mark each victory with a candle-burn on the gauntlet"
+      ]
+    },
+    "Spades": {
+      "motives": [
+        "enforces order in places where the law only arrives after the killing",
+        "catalogs repeat offenders across rival tables and raids",
+        "pursues doctrinal perfection through field discipline",
+        "wants every detonation to serve a measurable tactical purpose"
+      ],
+      "visualCues": [
+        "gunmetal armor scored with inspection marks and serialized plates",
+        "a tight tactical coat layered over suppression harnesses",
+        "a visor display flickering with warrant glyphs and intercept data",
+        "modular shields set on magnetic hardpoints"
+      ],
+      "ideology": [
+        "the Wardens believe discipline beats spectacle every time",
+        "they frame violence as enforcement and despise uncontrolled escalation",
+        "countermeasures are sacred because predictability saves squads",
+        "law is a formation, not just a statute"
+      ],
+      "quirks": [
+        "They rehearse breach angles under their breath",
+        "They log every spent charge even during retreat",
+        "They correct allies' stance without asking"
+      ]
+    },
+    "Diamonds": {
+      "motives": [
+        "trades certainty for advantage one forecast at a time",
+        "collects future fragments despite the toll they exact",
+        "seeks the one line of play where waste approaches zero",
+        "tests new predictive models in live conflict before board approval"
+      ],
+      "visualCues": [
+        "prism lenses and silver filaments nested around the eyes",
+        "sleek technocrat robes split by armor seams and projection rails",
+        "gloved hands tracing probability glyphs in cold light",
+        "a compact lattice rig humming with measured charge"
+      ],
+      "ideology": [
+        "the Consortium values precision over sentiment and invoices both",
+        "foresight is treated as infrastructure, not mysticism",
+        "they accept pain as a tax on useful knowledge",
+        "every action must justify itself in projected outcomes"
+      ],
+      "quirks": [
+        "They pause mid-sentence to revise a forecast aloud",
+        "They refuse to sit with their back to reflective surfaces",
+        "They keep tally marks for near-misses, not victories"
+      ]
+    },
+    "Clubs": {
+      "motives": [
+        "survives by stripping value from every battlefield they cross",
+        "owes a crew debt and intends to pay it in salvage",
+        "hunts rare parts rumored to be buried under the war district",
+        "wants to humiliate the polished factions with junk that works"
+      ],
+      "visualCues": [
+        "patchwork plates welded from five different uniforms",
+        "grease-black gloves and a mask filtered with salvaged mesh",
+        "acid stains on boots and tool belts packed with stolen triggers",
+        "junk armor hung with trophies cut from broken drones and shields"
+      ],
+      "ideology": [
+        "the Underhollow teaches that ownership follows possession and nerve",
+        "waste is a lie told by the rich to keep useful scraps",
+        "sacrifice is acceptable if the haul comes back heavier",
+        "they trust repairable tools more than noble doctrine"
+      ],
+      "quirks": [
+        "They pocket bolts from every room they enter",
+        "They name tools after people they dislike",
+        "They tap armor seams to hear where the rust is spreading"
+      ]
+    },
+    "Jokers": {
+      "motives": [
+        "chases the sound a shard makes right before reality disagrees",
+        "collects promises specifically to break them at the worst possible time",
+        "follows a private script no one else can read",
+        "seeks to turn a winning table into a story no survivor can tell straight"
+      ],
+      "visualCues": [
+        "a cracked mask changing expression between blinks",
+        "shard fragments orbiting in impossible loops around the shoulders",
+        "costume layers stitched from noble silk, police cloth, and burned tarp",
+        "neon fractures pulsing under pale skin like broken glass veins"
+      ],
+      "ideology": [
+        "Shard-bearers reject stable allegiance and make betrayal a certainty",
+        "they worship rupture over victory and confusion over order",
+        "their creed is contradiction, and contradiction is always enforced",
+        "they treat identity as a weapon to be traded mid-fight"
+      ],
+      "quirks": [
+        "They clap once before every detonation and never explain why",
+        "They speak in plural only when lying",
+        "They rearrange cards that are not theirs"
+      ]
+    }
+  }
+}

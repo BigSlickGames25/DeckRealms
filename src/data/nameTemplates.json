@@ -1,0 +1,52 @@
+{
+  "SAFE_EDIT_NOTE": "SAFE EDIT ZONE: Extend arrays only. Keep strings short and setting-consistent.",
+  "version": "1.0.0",
+  "factions": {
+    "Hearts": {
+      "titles": ["Lady", "Lord", "Sir", "Dame", "Warden", "Canon"],
+      "given": ["Aureline", "Marek", "Selene", "Iscor", "Valen", "Thessa", "Corin", "Edris", "Marrowyn", "Lucette"],
+      "houses": ["Veyr", "Cendral", "Mournet", "Aldwyne", "Sablet", "Korvain", "Duresse"],
+      "epithets": ["the Steadfast", "the Votive", "Shield-Kin", "of the Crimson Choir", "the Line-Keeper"]
+    },
+    "Spades": {
+      "titles": ["Inspector", "Captain", "Marshal", "Sergeant", "Lieutenant", "Magistrate"],
+      "surnames": ["Krell", "Dorn", "Vale", "Sorn", "Halvek", "Trask", "Merev", "Kast"],
+      "callsigns": ["LOCK", "WARD", "NULL", "GRID", "PALL", "SPIKE", "GAVEL"]
+    },
+    "Diamonds": {
+      "designators": ["Analyst", "Director", "Seer", "Operator", "Auditor", "Predictor"],
+      "surnames": ["Ilyra", "Voss", "Quen", "Merix", "Tal", "Nexa", "Serin", "Prax"],
+      "epithets": ["Future Margin", "Prism Debt", "Cold Forecast", "Split Horizon", "Precise Error"]
+    },
+    "Clubs": {
+      "given": ["Brik", "Moss", "Tallow", "Rivet", "Nix", "Cinder", "Gash", "Latch", "Sump", "Vero"],
+      "epithets": ["Rustmouth", "Quicklift", "Sourwire", "Grinblade", "Tin-Saint", "Leakhand", "Ashcoat"],
+      "crews": ["of Pipe Alley", "of Sump Row", "from the Hollow Market", "of Coal Steps", "from Red Drain"]
+    },
+    "Jokers": {
+      "personas": [
+        "The Bent Smile",
+        "Glass-Eyed Mercy",
+        "Third Laugh",
+        "Knifebloom Child",
+        "Saint Misdeal",
+        "The Quiet Heckler",
+        "Velvet Ruin",
+        "Borrowed Teeth",
+        "Last Confetti",
+        "Mirror Hunger",
+        "Rattle Prince",
+        "Ash Jester",
+        "Pale Encore",
+        "Mask of Two Tomorrows",
+        "Shriek Parlour",
+        "The Wrong Twin",
+        "Tin Halo Joke",
+        "Split Candle",
+        "Rain of Cards",
+        "Dead Applause"
+      ],
+      "shardTitles": ["the Shard-Bearer", "in Fracture", "with Borrowed Faces", "of the Splinter Stage", "under Broken Light"]
+    }
+  }
+}
