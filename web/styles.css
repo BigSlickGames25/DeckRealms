@@ -33,6 +33,7 @@ body {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 button,
@@ -48,11 +49,13 @@ code {
 
 .app-shell {
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 16px;
 }
 
 .frame {
   min-height: calc(100vh - 32px);
+  min-height: calc(100dvh - 32px);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
     linear-gradient(120deg, rgba(255, 255, 255, 0.03), transparent 45%),
@@ -62,6 +65,15 @@ code {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+}
+
+.frame--mission {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.frame--mission > .mission-layout {
+  min-height: 0;
 }
 
 .frame::before {
@@ -378,6 +390,8 @@ code {
 .hud-column {
   display: grid;
   gap: 12px;
+  min-width: 0;
+  min-height: 0;
 }
 
 .mission-banner,
@@ -568,6 +582,50 @@ code {
 
 .tutorial-strip {
   padding: 12px 14px;
+}
+
+.scene-action-strip {
+  display: none;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  gap: 8px;
+}
+
+.scene-action-strip__label {
+  color: var(--faction-accent);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.scene-action-strip__buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.scene-action-strip__button {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+  min-height: 40px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.scene-action-strip__button:hover {
+  border-color: color-mix(in srgb, var(--faction-accent) 35%, rgba(255,255,255,0.18));
+  background: rgba(255,255,255,0.08);
 }
 
 .tutorial-strip h3 {
@@ -956,6 +1014,7 @@ code {
   right: 0;
   width: min(480px, 100vw);
   height: 100vh;
+  height: 100dvh;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)),
     rgba(8, 10, 14, 0.97);
@@ -1055,6 +1114,7 @@ code {
 
   .frame {
     min-height: calc(100vh - 16px);
+    min-height: calc(100dvh - 16px);
     border-radius: 18px;
   }
 
@@ -1108,6 +1168,289 @@ code {
 
   .dialogue-overlay {
     padding: 10px;
+  }
+}
+
+@media (pointer: coarse) and (max-width: 980px) {
+  .scene-action-strip {
+    display: grid;
+  }
+
+  .hotspot {
+    border-width: 2px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hotspot span {
+    display: none;
+  }
+
+  .mission-layout {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .mission-banner p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hud-column {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 84vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scroll-snap-type: x proximity;
+    align-items: start;
+  }
+
+  .hud-column > * {
+    scroll-snap-align: start;
+  }
+
+  .log-list {
+    max-height: 180px;
+  }
+}
+
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 560px) {
+  .app-shell {
+    padding: 6px;
+  }
+
+  .frame {
+    min-height: calc(100vh - 12px);
+    min-height: calc(100dvh - 12px);
+    border-radius: 14px;
+  }
+
+  .frame--mission .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .frame--mission .brand__kicker {
+    display: none;
+  }
+
+  .frame--mission .brand__title {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .frame--mission .topbar__meta {
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .frame--mission .topbar__meta > :nth-child(2),
+  .frame--mission .topbar__meta > :nth-child(4) {
+    display: none;
+  }
+
+  .frame--mission .pill,
+  .frame--mission .topbar .btn {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+  }
+
+  .frame--mission > .mission-layout {
+    height: 100%;
+    padding: 8px;
+    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 34vw);
+    grid-template-rows: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .frame--mission .stage-column {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    align-content: stretch;
+  }
+
+  .frame--mission .mission-banner {
+    padding: 8px 10px;
+    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    border-radius: 12px;
+  }
+
+  .frame--mission .mission-banner h2 {
+    margin: 2px 0 0;
+    font-size: 0.98rem;
+  }
+
+  .frame--mission .mission-banner p {
+    display: none;
+  }
+
+  .frame--mission .mission-banner__eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .frame--mission .mission-banner__scene-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .frame--mission .mission-banner__scene-meta .pill {
+    font-size: 0.7rem;
+    padding: 4px 7px;
+  }
+
+  .frame--mission .scene-stage {
+    min-height: 0;
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 12px;
+  }
+
+  .frame--mission .scene-stage__label {
+    top: 8px;
+    left: 8px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    max-width: calc(100% - 16px);
+  }
+
+  .frame--mission .scene-stage__mood,
+  .frame--mission .scene-stage__text {
+    display: none;
+  }
+
+  .frame--mission .scene-action-strip {
+    padding: 8px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  .frame--mission .scene-action-strip__label {
+    font-size: 0.68rem;
+  }
+
+  .frame--mission .scene-action-strip__button {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .frame--mission .tutorial-strip {
+    display: none;
+  }
+
+  .frame--mission .hud-column {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-content: start;
+    gap: 8px;
+    padding-right: 2px;
+    scroll-snap-type: none;
+  }
+
+  .frame--mission .hud-column > * {
+    scroll-snap-align: none;
+  }
+
+  .frame--mission .hud-panel {
+    padding: 9px;
+    border-radius: 12px;
+  }
+
+  .frame--mission .hud-panel h3 {
+    margin: 0 0 7px;
+    font-size: 0.86rem;
+  }
+
+  .frame--mission .small-note,
+  .frame--mission .inventory-item__desc,
+  .frame--mission .recruit-card__lore,
+  .frame--mission .log-list__item {
+    font-size: 0.75rem;
+  }
+
+  .frame--mission .inventory-list,
+  .frame--mission .objective-list {
+    gap: 6px;
+  }
+
+  .frame--mission .objective,
+  .frame--mission .inventory-item {
+    padding: 6px 7px;
+  }
+
+  .frame--mission .log-list {
+    max-height: none;
+  }
+
+  .frame--mission .log-list__item:nth-child(n + 5) {
+    display: none;
+  }
+
+  .dialogue-overlay,
+  .locker-overlay {
+    padding: 6px;
+  }
+
+  .dialogue-panel {
+    max-height: calc(100dvh - 12px);
+    overflow: auto;
+    padding: 10px;
+  }
+
+  .dialogue-panel__media {
+    max-height: 32dvh;
+    aspect-ratio: 2.35 / 1;
+  }
+
+  .dialogue-panel__text {
+    line-height: 1.35;
+    font-size: 0.92rem;
+  }
+
+  .locker-panel {
+    max-height: calc(100dvh - 12px);
+    overflow: auto;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .locker-panel__stage {
+    aspect-ratio: 2.2 / 1;
+  }
+
+  .locker-panel__header {
+    gap: 8px;
+  }
+
+  .locker-panel__header h3 {
+    margin: 0 0 2px;
+    font-size: 1rem;
+  }
+
+  .locker-panel__header p {
+    font-size: 0.8rem;
+  }
+
+  .codex-drawer {
+    width: min(420px, 100vw);
+    height: 100dvh;
   }
 }
 

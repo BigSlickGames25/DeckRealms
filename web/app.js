@@ -784,6 +784,7 @@ class OpeningSequenceGame {
   renderMissionScreen() {
     const faction = FACTIONS[this.state.faction] ?? Object.values(FACTIONS)[0];
     const scene = SCENES[this.state.sceneId];
+    const completedObjectives = TUTORIAL_MISSION.objectives.filter((obj) => this.objectiveDone(obj.id)).length;
     const hotspots = scene.hotspots
       .map(
         (h) => `
@@ -796,6 +797,20 @@ class OpeningSequenceGame {
             title="${h.label}"
           >
             <span>${h.label}</span>
+          </button>
+        `
+      )
+      .join("");
+    const quickActions = scene.hotspots
+      .map(
+        (h) => `
+          <button
+            class="scene-action-strip__button"
+            data-action="hotspot"
+            data-hotspot="${h.id}"
+            type="button"
+          >
+            ${h.label}
           </button>
         `
       )
@@ -815,6 +830,7 @@ class OpeningSequenceGame {
             <div class="mission-banner__scene-meta">
               <div class="pill">${scene.title}</div>
               <div class="pill">${faction.district}</div>
+              <div class="pill">${completedObjectives}/${TUTORIAL_MISSION.objectives.length} Objectives</div>
             </div>
           </div>
 
@@ -825,6 +841,13 @@ class OpeningSequenceGame {
             <div class="scene-stage__text">${scene.backdropText}</div>
             <div class="hotspot-layer">
               ${hotspots}
+            </div>
+          </div>
+
+          <div class="scene-action-strip" role="toolbar" aria-label="Scene quick actions">
+            <div class="scene-action-strip__label">Quick Actions</div>
+            <div class="scene-action-strip__buttons">
+              ${quickActions}
             </div>
           </div>
 
